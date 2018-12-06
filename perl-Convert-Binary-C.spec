@@ -118,8 +118,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1x86_64-linux-thread-multi/Convert/Binary/C.pm
-/usr/lib/perl5/vendor_perl/5.28.1x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
+/usr/lib/perl5/vendor_perl/5.28.1/x86_64-linux-thread-multi/Convert/Binary/C.pm
+/usr/lib/perl5/vendor_perl/5.28.1/x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -132,7 +132,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
+/usr/lib/perl5/vendor_perl/5.28.1/x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
 
 %files license
 %defattr(0644,root,root,0755)
