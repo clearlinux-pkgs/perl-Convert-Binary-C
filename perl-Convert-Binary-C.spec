@@ -4,7 +4,7 @@
 #
 Name     : perl-Convert-Binary-C
 Version  : 0.78
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libconvert-binary-c-perl/libconvert-binary-c-perl_0.78-1.debian.tar.xz
