@@ -4,7 +4,7 @@
 #
 Name     : perl-Convert-Binary-C
 Version  : 0.78
-Release  : 8
+Release  : 9
 URL      : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libconvert-binary-c-perl/libconvert-binary-c-perl_0.78-1.debian.tar.xz
@@ -18,22 +18,14 @@ Requires: perl-Convert-Binary-C-man = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
-CONTENTS
-1. DESCRIPTION
-2. INSTALLATION
-3. UPGRADING
-4. DOCUMENTATION
-5. MAILING LIST
-6. CONFIGURATION
-7. COMPATIBILITY
-8. FEATURES
-9. COPYRIGHT
+ucpp-1.3 is a C preprocessor compliant to ISO-C99.
+Author: Thomas Pornin <pornin@bolet.org>
+Main site: http://pornin.nerim.net/ucpp/
 
 %package bin
 Summary: bin components for the perl-Convert-Binary-C package.
 Group: Binaries
 Requires: perl-Convert-Binary-C-license = %{version}-%{release}
-Requires: perl-Convert-Binary-C-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-Convert-Binary-C package.
@@ -45,6 +37,7 @@ Group: Development
 Requires: perl-Convert-Binary-C-lib = %{version}-%{release}
 Requires: perl-Convert-Binary-C-bin = %{version}-%{release}
 Provides: perl-Convert-Binary-C-devel = %{version}-%{release}
+Requires: perl-Convert-Binary-C = %{version}-%{release}
 
 %description dev
 dev components for the perl-Convert-Binary-C package.
@@ -80,7 +73,7 @@ man components for the perl-Convert-Binary-C package.
 cd ..
 %setup -q -T -D -n Convert-Binary-C-0.78 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Convert-Binary-C-0.78/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Convert-Binary-C-0.78/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
