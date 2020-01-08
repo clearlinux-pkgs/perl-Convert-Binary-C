@@ -4,7 +4,7 @@
 #
 Name     : perl-Convert-Binary-C
 Version  : 0.78
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libconvert-binary-c-perl/libconvert-binary-c-perl_0.78-1.debian.tar.xz
@@ -12,15 +12,22 @@ Summary  : 'Binary Data Conversion using C Types'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl BSD-3-Clause GPL-2.0 LGPL-2.1 MIT Rdisc
 Requires: perl-Convert-Binary-C-bin = %{version}-%{release}
-Requires: perl-Convert-Binary-C-lib = %{version}-%{release}
 Requires: perl-Convert-Binary-C-license = %{version}-%{release}
 Requires: perl-Convert-Binary-C-man = %{version}-%{release}
+Requires: perl-Convert-Binary-C-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
-ucpp-1.3 is a C preprocessor compliant to ISO-C99.
-Author: Thomas Pornin <pornin@bolet.org>
-Main site: http://pornin.nerim.net/ucpp/
+CONTENTS
+1. DESCRIPTION
+2. INSTALLATION
+3. UPGRADING
+4. DOCUMENTATION
+5. MAILING LIST
+6. CONFIGURATION
+7. COMPATIBILITY
+8. FEATURES
+9. COPYRIGHT
 
 %package bin
 Summary: bin components for the perl-Convert-Binary-C package.
@@ -34,22 +41,12 @@ bin components for the perl-Convert-Binary-C package.
 %package dev
 Summary: dev components for the perl-Convert-Binary-C package.
 Group: Development
-Requires: perl-Convert-Binary-C-lib = %{version}-%{release}
 Requires: perl-Convert-Binary-C-bin = %{version}-%{release}
 Provides: perl-Convert-Binary-C-devel = %{version}-%{release}
 Requires: perl-Convert-Binary-C = %{version}-%{release}
 
 %description dev
 dev components for the perl-Convert-Binary-C package.
-
-
-%package lib
-Summary: lib components for the perl-Convert-Binary-C package.
-Group: Libraries
-Requires: perl-Convert-Binary-C-license = %{version}-%{release}
-
-%description lib
-lib components for the perl-Convert-Binary-C package.
 
 
 %package license
@@ -68,18 +65,28 @@ Group: Default
 man components for the perl-Convert-Binary-C package.
 
 
+%package perl
+Summary: perl components for the perl-Convert-Binary-C package.
+Group: Default
+Requires: perl-Convert-Binary-C = %{version}-%{release}
+
+%description perl
+perl components for the perl-Convert-Binary-C package.
+
+
 %prep
 %setup -q -n Convert-Binary-C-0.78
-cd ..
-%setup -q -T -D -n Convert-Binary-C-0.78 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libconvert-binary-c-perl_0.78-1.debian.tar.xz
+cd %{_builddir}/Convert-Binary-C-0.78
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Convert-Binary-C-0.78/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Convert-Binary-C-0.78/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make
@@ -89,7 +96,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -98,7 +105,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C/deblicense_copyright
+cp %{_builddir}/Convert-Binary-C-0.78/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C/7c140b1599f7b490e0427b1dd4da10470d3da1b5
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -111,8 +118,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Convert/Binary/C.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -123,14 +128,16 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Convert::Binary::C.3
 /usr/share/man/man3/Convert::Binary::C::Cached.3
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
-
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Convert-Binary-C/deblicense_copyright
+/usr/share/package-licenses/perl-Convert-Binary-C/7c140b1599f7b490e0427b1dd4da10470d3da1b5
 
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/ccconfig.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Convert/Binary/C.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
+/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
