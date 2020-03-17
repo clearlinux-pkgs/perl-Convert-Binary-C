@@ -4,7 +4,7 @@
 #
 Name     : perl-Convert-Binary-C
 Version  : 0.78
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.78.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libconvert-binary-c-perl/libconvert-binary-c-perl_0.78-1.debian.tar.xz
@@ -105,7 +105,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C
-cp %{_builddir}/Convert-Binary-C-0.78/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C/7c140b1599f7b490e0427b1dd4da10470d3da1b5
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Convert-Binary-C/7c140b1599f7b490e0427b1dd4da10470d3da1b5
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -138,6 +138,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Convert/Binary/C.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
-/usr/lib/perl5/vendor_perl/5.30.1/x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/Convert/Binary/C.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/Convert/Binary/C/Cached.pm
+/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/Convert/Binary/C/C.so
