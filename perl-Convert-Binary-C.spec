@@ -7,7 +7,7 @@
 #
 Name     : perl-Convert-Binary-C
 Version  : 0.85
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.85.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MH/MHX/Convert-Binary-C-0.85.tar.gz
 Summary  : 'Binary Data Conversion using C Types'
